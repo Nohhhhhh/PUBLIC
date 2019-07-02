@@ -212,7 +212,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			{
 				g_pAStar->MakeStartNode(g_pAStar->m_iTempStartX, g_pAStar->m_iTempStartY, g_pAStar->m_iTempEndX, g_pAStar->m_iTempEndY);
 				bTimer = TRUE;
-				SetTimer(hWnd, 1, 0, NULL);
+				SetTimer(hWnd, 1, USER_TIMER_MINIMUM, NULL);
 			}
 			break;
 		}
