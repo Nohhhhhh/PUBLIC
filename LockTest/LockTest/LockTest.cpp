@@ -9,6 +9,8 @@
 #include <iostream>
 #include <atomic>
 
+#pragma comment(lib, "Winmm.lib")
+
 void atomiclockedfunc(LPVOID lpThreadParameter);
 void interlockedfunc(LPVOID lpThreadParameter);
 void srwlockedfunc(LPVOID lpThreadParameter);
@@ -45,10 +47,10 @@ int main()
     InitializeSRWLock(&SRW);
     InitializeSRWLock(&SRW2);
 
-    memset( &m_lFrequency, 0, sizeof(LARGE_INTEGER) );
-    QueryPerformanceFrequency( &m_lFrequency );
-    // 나노 세컨드: 10억분의 1초. 마이크로 세컨드: 100만분의 1초. 밀리 세컨드. 1천분의 1초
-    m_dMicroFrequency = static_cast<double>( m_lFrequency.QuadPart / 10000.0f );
+    memset(&m_lFrequency, 0, sizeof(LARGE_INTEGER));
+    QueryPerformanceFrequency(&m_lFrequency);
+    // 나노 세컨드: 10억분의 1초. 마이크로 세컨드: 100만분의 1초. 밀리 세컨드: 1천분의 1초
+    m_dMicroFrequency = static_cast<double>(m_lFrequency.QuadPart / 1000.0f);
 
     std::cout << std::endl << "Thread Count - input: ";
     std::cin >> testcnt;
@@ -56,15 +58,15 @@ int main()
     switch (locktype)
     {
     case 1:
-        QueryPerformanceCounter( &lStartTime );
+        QueryPerformanceCounter(&lStartTime);
         for (int i = 0; i < testcnt; ++i)
             _beginthread(atomiclockedfunc, 0, (void *)nullptr);
 
-        while(iCount != testcnt)
+        while (iCount != testcnt)
         {
             Sleep(1000);
         }
-        
+
         printf("atomic: %lf\n", ui64TotalTime / testcnt / m_dMicroFrequency);
         ui64TotalTime = 0;
         ithreadcnt = 0;
@@ -72,43 +74,43 @@ int main()
         uiCount = 0;
         Sleep(2000);
     case 2:
-        QueryPerformanceCounter( &lStartTime );
+        QueryPerformanceCounter(&lStartTime);
         for (int i = 0; i < testcnt; ++i)
             _beginthread(interlockedfunc, 0, (void *)nullptr);
 
-        while(iCount != testcnt)
+        while (iCount != testcnt)
         {
             Sleep(1000);
         }
 
-         printf("interlock: %lf\n", ui64TotalTime / testcnt / m_dMicroFrequency);
-         ui64TotalTime = 0;
+        printf("interlock: %lf\n", ui64TotalTime / testcnt / m_dMicroFrequency);
+        ui64TotalTime = 0;
         ithreadcnt = 0;
         iCount = 0;
         uiCount = 0;
         Sleep(2000);
     case 3:
-        QueryPerformanceCounter( &lStartTime );
+        QueryPerformanceCounter(&lStartTime);
         for (int i = 0; i < testcnt; ++i)
             _beginthread(srwlockedfunc, 0, (void *)nullptr);
 
-        while(iCount != testcnt)
+        while (iCount != testcnt)
         {
             Sleep(1000);
         }
 
-         printf("srwlock: %lf\n", ui64TotalTime / testcnt / m_dMicroFrequency);
-         ui64TotalTime = 0;
+        printf("srwlock: %lf\n", ui64TotalTime / testcnt / m_dMicroFrequency);
+        ui64TotalTime = 0;
         ithreadcnt = 0;
         iCount = 0;
         uiCount = 0;
         Sleep(2000);
     case 4:
-        QueryPerformanceCounter( &lStartTime );
+        QueryPerformanceCounter(&lStartTime);
         for (int i = 0; i < testcnt; ++i)
             _beginthread(cslockedfunc, 0, (void *)nullptr);
 
-        while(iCount != testcnt)
+        while (iCount != testcnt)
         {
             Sleep(1000);
         }
@@ -120,11 +122,11 @@ int main()
         uiCount = 0;
         Sleep(2000);
     case 5:
-        QueryPerformanceCounter( &lStartTime );
+        QueryPerformanceCounter(&lStartTime);
         for (int i = 0; i < testcnt; ++i)
             _beginthread(mxlockedfunc, 0, (void *)nullptr);
 
-        while(iCount != testcnt)
+        while (iCount != testcnt)
         {
             Sleep(1000);
         }
@@ -149,10 +151,10 @@ void interlockedfunc(LPVOID lpThreadParameter)
     ++ithreadcnt;
     ReleaseSRWLockExclusive(&SRW2);
 
-    while(testcnt != ithreadcnt)
+    while (testcnt != ithreadcnt)
         Sleep(1);
 
-    while(1)
+    while (1)
     {
         if (10000000 <= InterlockedIncrement(&uiCount))
         {
@@ -162,12 +164,12 @@ void interlockedfunc(LPVOID lpThreadParameter)
 
     AcquireSRWLockExclusive(&SRW2);
     LARGE_INTEGER _lendtime;
-    QueryPerformanceCounter( &_lendtime );
-	unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
+    QueryPerformanceCounter(&_lendtime);
+    unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
     ui64TotalTime += _ui64time;
     ++iCount;
     ReleaseSRWLockExclusive(&SRW2);
-    
+
     return;
 }
 
@@ -177,10 +179,10 @@ void srwlockedfunc(LPVOID lpThreadParameter)
     ++ithreadcnt;
     ReleaseSRWLockExclusive(&SRW2);
 
-    while(testcnt != ithreadcnt)
+    while (testcnt != ithreadcnt)
         Sleep(1);
 
-    while(1)
+    while (1)
     {
         AcquireSRWLockExclusive(&SRW);
         if (10000000 <= ++uiCount)
@@ -193,12 +195,12 @@ void srwlockedfunc(LPVOID lpThreadParameter)
 
     AcquireSRWLockExclusive(&SRW2);
     LARGE_INTEGER _lendtime;
-    QueryPerformanceCounter( &_lendtime );
-	unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
+    QueryPerformanceCounter(&_lendtime);
+    unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
     ui64TotalTime += _ui64time;
     ++iCount;
     ReleaseSRWLockExclusive(&SRW2);
-    
+
     return;
 }
 
@@ -208,10 +210,10 @@ void cslockedfunc(LPVOID lpThreadParameter)
     ++ithreadcnt;
     ReleaseSRWLockExclusive(&SRW2);
 
-    while(testcnt != ithreadcnt)
+    while (testcnt != ithreadcnt)
         Sleep(1);
 
-    while(1)
+    while (1)
     {
         EnterCriticalSection(&CS);
         if (10000000 <= ++uiCount)
@@ -224,13 +226,13 @@ void cslockedfunc(LPVOID lpThreadParameter)
 
     AcquireSRWLockExclusive(&SRW2);
     LARGE_INTEGER _lendtime;
-    QueryPerformanceCounter( &_lendtime );
-	
-	unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
+    QueryPerformanceCounter(&_lendtime);
+
+    unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
     ui64TotalTime += _ui64time;
     ++iCount;
     ReleaseSRWLockExclusive(&SRW2);
-    
+
     return;
 }
 
@@ -240,10 +242,10 @@ void mxlockedfunc(LPVOID lpThreadParameter)
     ++ithreadcnt;
     ReleaseSRWLockExclusive(&SRW2);
 
-    while(testcnt != ithreadcnt)
+    while (testcnt != ithreadcnt)
         Sleep(1);
 
-    while(1)
+    while (1)
     {
         mtx.lock();
         if (10000000 <= ++uiCount)
@@ -256,12 +258,12 @@ void mxlockedfunc(LPVOID lpThreadParameter)
 
     AcquireSRWLockExclusive(&SRW2);
     LARGE_INTEGER _lendtime;
-    QueryPerformanceCounter( &_lendtime );
-	unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
+    QueryPerformanceCounter(&_lendtime);
+    unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
     ui64TotalTime += _ui64time;
     ++iCount;
     ReleaseSRWLockExclusive(&SRW2);
-    
+
     return;
 }
 
@@ -271,10 +273,10 @@ void atomiclockedfunc(LPVOID lpThreadParameter)
     ++ithreadcnt;
     ReleaseSRWLockExclusive(&SRW2);
 
-    while(testcnt != ithreadcnt)
+    while (testcnt != ithreadcnt)
         Sleep(1);
 
-    while(1)
+    while (1)
     {
         if (10000000 <= std::atomic_fetch_add(&aCount, 1))
         {
@@ -284,11 +286,11 @@ void atomiclockedfunc(LPVOID lpThreadParameter)
 
     AcquireSRWLockExclusive(&SRW2);
     LARGE_INTEGER _lendtime;
-    QueryPerformanceCounter( &_lendtime );
-	unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
+    QueryPerformanceCounter(&_lendtime);
+    unsigned __int64 _ui64time = _lendtime.QuadPart - lStartTime.QuadPart;
     ui64TotalTime += _ui64time;
     ++iCount;
     ReleaseSRWLockExclusive(&SRW2);
-    
+
     return;
 }
