@@ -6,5 +6,5 @@ PUBLIC REPOSITORY
 ### LockTest 
 * Check the performance of C++ Lock types (atomic / Interlocked / SRWLock / CriticalSection / Mutex)
 
-### A_Star_Search
+### AStarSearch
 * Path finding using A* algorithm
