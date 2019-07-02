@@ -8,3 +8,6 @@ PUBLIC REPOSITORY
 
 ### AStarSearch
 * Path finding using A* algorithm
+
+### JumpPointSearch
+* Path finding using Jump Point Search algorithm
