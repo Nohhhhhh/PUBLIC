@@ -11,3 +11,7 @@ PUBLIC REPOSITORY
 
 ### JumpPointSearch
 * Path finding using Jump Point Search algorithm
+
+### JumpPointSearch_NotRecursive
+* Path finding using Jump Point Search algorithm
+* remove the recursive function call
