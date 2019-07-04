@@ -16,3 +16,8 @@
 *.ipch
 *.ilk
 *.opendb
+*.pdb
+*.db
+*.tlog
+*.lastbuildstate
+*.pch
