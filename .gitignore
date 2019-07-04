@@ -21,3 +21,5 @@
 *.tlog
 *.lastbuildstate
 *.pch
+*.obj
+*.log
