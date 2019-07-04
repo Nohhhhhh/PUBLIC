@@ -1,5 +1,4 @@
 # PUBLIC
-PUBLIC REPOSITORY
 HomePage: https://iamsungjunnoh.wordpress.com
 
 ## 1. PROJECT
