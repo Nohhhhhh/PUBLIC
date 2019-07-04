@@ -1,8 +1,8 @@
 # PUBLIC
 PUBLIC REPOSITORY
+HomePage: https://iamsungjunnoh.wordpress.com
 
-
-## PROJECT
+## 1. PROJECT
 ### LockTest 
 * Check the performance of C++ Lock types (atomic / Interlocked / SRWLock / CriticalSection / Mutex)
 
@@ -17,7 +17,7 @@ PUBLIC REPOSITORY
 * remove the recursive function call
 
 
-## SOURCE
+## 2. SOURCE
 ### Utility
 * TextParser
 * Profiler
