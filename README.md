@@ -23,5 +23,5 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * SystemLog
 
 ### MemoryPool
-* MemoryPool_LF (version - Lock Free)
-* MemoryPool_TLS (version - MemoryPool_LF added Thread Local Storage)
+* MemoryPool_LF (Lock Free)
+* MemoryPool_TLS (MemoryPool_LF added Thread Local Storage)
