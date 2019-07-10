@@ -24,6 +24,7 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * Profiler
 * SystemLog
 * FileStream
+* LockGuard
 
 ### MemoryPool
 * MemoryPool_LF (Lock Free)
