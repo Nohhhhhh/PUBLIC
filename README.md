@@ -20,7 +20,7 @@ HomePage: https://iamsungjunnoh.wordpress.com
 
 ## 2. SOURCE
 ### __Noh.h 
-* typedef and enum class are declared and defined.
+* 'typedef' and 'enum class' are declared and defined.
 
 ### Utility
 * TextParser
