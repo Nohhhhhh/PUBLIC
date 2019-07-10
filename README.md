@@ -19,6 +19,9 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * Check various system information using PDH (Processor / Memory / Network Interface )
 
 ## 2. SOURCE
+### __Noh.h 
+* typedef and enum class are declared and defined.
+
 ### Utility
 * TextParser
 * Profiler
