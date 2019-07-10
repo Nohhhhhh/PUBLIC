@@ -22,13 +22,13 @@ HomePage: https://iamsungjunnoh.wordpress.com
 ### __Noh.h 
 * 'typedef' and 'enum class' are declared and defined.
 
-### Utility
+### Folder: Utility
 * TextParser
 * Profiler
 * SystemLog
 * FileStream
 * LockGuard
 
-### MemoryPool
+### Folder: MemoryPool
 * MemoryPool_LF (Lock Free)
 * MemoryPool_TLS (MemoryPool_LF added Thread Local Storage)
