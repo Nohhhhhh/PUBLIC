@@ -23,6 +23,7 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * TextParser
 * Profiler
 * SystemLog
+* FileStream
 
 ### MemoryPool
 * MemoryPool_LF (Lock Free)
