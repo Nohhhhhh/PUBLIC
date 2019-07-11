@@ -1,8 +1,8 @@
 import os,sys, xml, xml.dom.minidom, copy
 
 ### path
-vcxprojPath = 'D:\\01_DF\\sf_gameserver_kor\\trunk\\Source\\SF_GameServer\\SF_GameServer.vcxproj'
-unityFolderPath = 'D:\\01_DF\\sf_gameserver_kor\\trunk\\Source\\SF_GameServer\\UnityBuild'
+vcxprojPath = 'D:\\GameServer\\GameServer.vcxproj'
+unityFolderPath = 'D:\\SF_GameServer\\UnityBuild'
 
 ### load xmlv
 doc = xml.dom.minidom.parse(vcxprojPath)
