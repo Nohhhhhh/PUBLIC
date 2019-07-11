@@ -28,6 +28,7 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * SystemLog
 * FileStream
 * LockGuard
+* TimerManager
 
 ### Folder: MemoryPool
 * MemoryPool_LF (Lock Free)
