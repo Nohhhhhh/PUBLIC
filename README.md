@@ -19,7 +19,7 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * Check various system information using PDH (Processor / Memory / Network Interface )
 
 ### UnityBuildMaker
-* Automatically make c++ project as c++ UnityBuild
+* Automatically make C++ project as C++ UnityBuild
 
 ## 2. SOURCE
 ### __Noh.h 
