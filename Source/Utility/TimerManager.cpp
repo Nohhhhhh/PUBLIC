@@ -47,16 +47,9 @@ void NOH::CTimerManager::CTimer::Run(void)
             LONGLONG _lldiff = (_lcurrenttime.QuadPart - pos->lInitTime.QuadPart) / m_dSecondFrequency;
             _bcallfunc = true;
 
-            if ( TIMER_TYPE::INSTANT_TIMER == pos->TimerType )
+            if ( TIMER_TYPE::FLAT_TIMER == pos->TimerType )
             {
-                if ( _lldiff >= pos->llInstantTime )
-                    pos->lInitTime = _lcurrenttime;
-                else
-                    _bcallfunc = false;
-            }
-            else
-            {
-                if ( _lldiff >= static_cast<LONGLONG>( pos->FlatTime ) && 0 == m_LocalTime.wSecond )
+                if ( _lldiff >= static_cast<LONGLONG>( pos->TimeValue ) && 0 == m_LocalTime.wSecond )
                     pos->lInitTime = _lcurrenttime;
                 else
                     _bcallfunc = false;
@@ -85,24 +78,14 @@ void NOH::CTimerManager::CTimer::Close(void)
     End();
 }
 
-void NOH::CTimerManager::CTimer::RegisterTimer(const TIMERFUNC & Func, const LONGLONG llInstantTime, const TIMER_TYPE TimerType)
+void NOH::CTimerManager::CTimer::RegisterTimer(const TIMERFUNC & Func, const TIME_VALUE TimeValue, const TIMER_TYPE TimerType)
 {
     CLockGuard lockguard( LOCK_TYPE::SRWLOCK_EXCLUSIVE, &m_SRWLock );
 
     LARGE_INTEGER lInitTime;
     QueryPerformanceCounter( &lInitTime );
 
-    m_TimerList.emplace_back( std::move( TIMER_INFO( Func, llInstantTime, FLAT_TIME::DEFAULT, TimerType, lInitTime ) ) );
-}
-
-void NOH::CTimerManager::CTimer::RegisterTimer(const TIMERFUNC & Func, const FLAT_TIME FlatTime, const TIMER_TYPE TimerType)
-{
-    CLockGuard lockguard( LOCK_TYPE::SRWLOCK_EXCLUSIVE, &m_SRWLock );
-
-    LARGE_INTEGER lInitTime;
-    QueryPerformanceCounter( &lInitTime );
-
-    m_TimerList.emplace_back( std::move( TIMER_INFO( Func, -1, FlatTime, TimerType, lInitTime ) ) );
+    m_TimerList.emplace_back( std::move( TIMER_INFO( Func, TimeValue, TimerType, lInitTime ) ) );
 }
 
 

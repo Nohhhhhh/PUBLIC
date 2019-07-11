@@ -1,9 +1,9 @@
 /*
     // 초 단위
-    // 등록 즉시 호출 후 등록 시간 마다 호출
-    CTimerManager::GetInstance()->RegisterTimer( func, 60, TIMER_TYPE::INSTANT_TIMER);
+    // 등록 즉시 호출
+    CTimerManager::GetInstance()->RegisterTimer( func, TIME_VALUE::INSTANCE, TIMER_TYPE::INSTANT_TIMER);
     // 매 시간 마다 호출
-    CTimerManager::GetInstance()->RegisterTimer( func, FLAT_TIME::EVERY_1_MINUTE, TIMER_TYPE::FLAT_TIMER);
+    CTimerManager::GetInstance()->RegisterTimer( func, TIME_VALUE::EVERY_1_MINUTE, TIMER_TYPE::FLAT_TIMER);
 
     CTimerManager::GetInstance()->RemoveTimer( func );
 */
@@ -30,15 +30,14 @@ namespace NOH
             typedef struct st_TIMER_INFO
 	        {
 		        TIMERFUNC		Func;
-                LONGLONG        llInstantTime;
-		        FLAT_TIME		FlatTime;
+		        TIME_VALUE		TimeValue;
 		        TIMER_TYPE		TimerType;
                 LARGE_INTEGER   lInitTime;
 
 		        st_TIMER_INFO( void ) 
-                    : Func(nullptr), llInstantTime(-1), FlatTime(FLAT_TIME::DEFAULT), TimerType(TIMER_TYPE::DEFAULT), lInitTime({0}) {}
-		        st_TIMER_INFO( const TIMERFUNC& func, const LONGLONG llinstanttime, const FLAT_TIME flattime, const TIMER_TYPE timertype, LARGE_INTEGER inittime )
-			        : Func(func), FlatTime(flattime), TimerType(timertype), lInitTime(inittime) {}
+                    : Func(nullptr), TimeValue(TIME_VALUE::DEFAULT), TimerType(TIMER_TYPE::DEFAULT), lInitTime({0}) {}
+		        st_TIMER_INFO( const TIMERFUNC& func, const TIME_VALUE flattime, const TIMER_TYPE timertype, LARGE_INTEGER inittime )
+			        : Func(func), TimeValue(flattime), TimerType(timertype), lInitTime(inittime) {}
 		       
 	        } TIMER_INFO;
 
@@ -57,8 +56,7 @@ namespace NOH
             const THREAD_TYPE & GetThreadType( void ) { return m_ThreadType; }
 
         public:
-	        void RegisterTimer( const TIMERFUNC& Func, const LONGLONG llInstantTime, const TIMER_TYPE TimerType );
-            void RegisterTimer( const TIMERFUNC& Func, const FLAT_TIME FlatTime, const TIMER_TYPE TimerType );
+            void RegisterTimer( const TIMERFUNC& Func, const TIME_VALUE TimeValue, const TIMER_TYPE TimerType );
             // 타이머 함수 제거
 	        void RemoveTimer( const TIMERFUNC& Func );
             // 타이머 전부 제거

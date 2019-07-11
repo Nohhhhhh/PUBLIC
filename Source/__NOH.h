@@ -110,12 +110,41 @@ namespace NOH
 		INSTANT_TIMER   = 2
 	};
 
+    enum class TIME_VALUE
+	{
+		// 등록 후 아래 정각에 따라 발동 ( 밀리초 )
+        DEFAULT         = -1,
+        INSTANCE        = 0,
+
+		EVERY_1_SECOND  = 1,
+		EVERY_5_SECOND  = EVERY_1_SECOND * 5,
+		EVERY_10_SECOND = EVERY_1_SECOND * 10,
+		EVERY_15_SECOND = EVERY_1_SECOND * 15,                   
+		EVERY_20_SECOND = EVERY_1_SECOND * 20,
+		EVERY_30_SECOND = EVERY_1_SECOND * 30,
+                                                   
+		EVERY_1_MINUTE  = EVERY_1_SECOND * 60,
+		EVERY_5_MINUTE  = EVERY_1_MINUTE * 5,
+		EVERY_10_MINUTE = EVERY_1_MINUTE * 10,
+		EVERY_15_MINUTE = EVERY_1_MINUTE * 15,
+		EVERY_20_MINUTE = EVERY_1_MINUTE * 20,
+		EVERY_30_MINUTE = EVERY_1_MINUTE * 30,
+
+		EVERY_1_HOUR    = EVERY_1_MINUTE * 60,
+		EVERY_2_HOUR    = EVERY_1_HOUR   * 2,
+		EVERY_3_HOUR    = EVERY_1_HOUR   * 3,
+		EVERY_4_HOUR    = EVERY_1_HOUR   * 4,
+		EVERY_6_HOUR    = EVERY_1_HOUR   * 6,
+		EVERY_8_HOUR    = EVERY_1_HOUR   * 8,
+		EVERY_12_HOUR   = EVERY_1_HOUR   * 12,
+		EVERY_24_HOUR   = EVERY_1_HOUR   * 24,
+	};
+
     enum class FLAT_TIME
 	{
 		// 등록 후 아래 정각에 따라 발동 ( 밀리초 )
         DEFAULT         = -1,
 
-        INSTANCE        = 0,
 		EVERY_1_SECOND  = 1000,
 		EVERY_5_SECOND  = EVERY_1_SECOND * 5,
 		EVERY_10_SECOND = EVERY_1_SECOND * 10,
