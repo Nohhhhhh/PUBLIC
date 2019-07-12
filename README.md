@@ -40,3 +40,6 @@ HomePage: https://iamsungjunnoh.wordpress.com
 ### Folder: DataStructure
 * Stack_LF (Lock Free)
 * Queue_LF (Lock Free)
+
+### Folder: DesginPattern
+* Singleton
