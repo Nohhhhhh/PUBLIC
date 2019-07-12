@@ -42,4 +42,4 @@ HomePage: https://iamsungjunnoh.wordpress.com
 * Queue_LF (Lock Free)
 
 ### Folder: DesginPattern
-* Singleton
+* Singleton (static template)
