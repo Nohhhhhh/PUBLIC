@@ -21,6 +21,9 @@ HomePage: https://iamsungjunnoh.wordpress.com
 ### UnityBuildMaker
 * Automatically make C++ project as C++ UnityBuild
 
+### AutoDeployment
+* Build vs project + Upload files to FTP + Commit SVN
+
 ## 2. SOURCE
 ### __Noh.h 
 * 'typedef' and 'enum class' are declared and defined.
