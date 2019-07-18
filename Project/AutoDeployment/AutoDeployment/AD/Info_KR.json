@@ -1,0 +1,45 @@
+{
+	"KR":{},
+
+
+	"BUILD_INFO":
+	{
+		"build_version":"18,12,11,1",
+		
+		"build_project":
+		[
+			{"isuse":"0", 	"name":"프로젝트명 적으면 됩니다.",			"configuration":"빌드 구성 적으면 됩니다.",														"output_path":"빌드 후, exe랑 pdb 파일 출력되는 경로 적으면 됩니다. 프로젝트명 전 까지만 적으면 됩니다.",			"sln_path":"솔루션 sln 경로 적으면 됩니다. sln 파일명 까지 적어주세요.",					"project_path":"프로젝트 경로 적어주시면 됩니다. 프로젝트명은 적지 마세요."},
+
+			{"isuse":"1", 	"name":"SF_GameServer", 			"configuration":"UnityBuild_Release|UnityBuild_Release_CLAN|UnityBuild_Release_LADDER", "output_path":"D:\\trunk\\bin",															"sln_path":"D:\\trunk\\Source\\GameServer.sln",							"project_path":"D:\\trunk\\Source\\GameServer"},		
+			{"isuse":"0", 	"name":"SF_CheckOverlapServer", 	"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\CheckOverlapServer.sln",					"project_path":"D:\\trunk\\Source\\CheckOverlapServer"},
+			{"isuse":"0", 	"name":"SF_ClanChatServer", 		"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\ClanChatServer.sln",						"project_path":"D:\\trunk\\Source\\ClanChatServer"},
+			{"isuse":"0", 	"name":"SF_LoginServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\LoginServer.sln",						"project_path":"D:\\trunk\\Source\\LoginServer"},
+			{"isuse":"0", 	"name":"SF_SessionServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\SessionServer.sln",						"project_path":"D:\\trunk\\Source\\SessionServer"},
+			{"isuse":"0", 	"name":"SF_ManageServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\ManageServer.sln",						"project_path":"D:\\trunk\\Source\\ManageServer"}
+			
+		],
+		
+		"build_path":
+		[
+			{"version":"2.0", "path":"C:\\Program Files (x86)\\Microsoft Visual Studio 8\\Common7\\IDE\\devenv.exe"},
+			{"version":"4.0", "path":"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild.exe"}
+		]
+	},
+	
+
+	"FTP_INFO":
+	{
+		"ftp_able"			:"0",
+		"ftp_folder"		:"20189999_01",
+		"ftp_serverpath"	:"//Server",
+		"ftp_connectinfo"	:{ "host":"1.1.1.1", "port":"21", "id":"server", "pass":"server1"}
+	},
+	
+	
+	"SVN_INFO":
+	{
+		"svn_able"			: "1",
+		"svn_commit_msg"	:"[patch]",
+		"tortoisesvn_path"	:"C:\\Program Files\\TortoiseSVN\\bin"
+	}
+}
