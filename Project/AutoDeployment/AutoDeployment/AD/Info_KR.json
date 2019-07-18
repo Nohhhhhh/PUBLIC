@@ -11,12 +11,9 @@
 			{"isuse":"0", 	"name":"프로젝트명 적으면 됩니다.",			"configuration":"빌드 구성 적으면 됩니다.",														"output_path":"빌드 후, exe랑 pdb 파일 출력되는 경로 적으면 됩니다. 프로젝트명 전 까지만 적으면 됩니다.",			"sln_path":"솔루션 sln 경로 적으면 됩니다. sln 파일명 까지 적어주세요.",					"project_path":"프로젝트 경로 적어주시면 됩니다. 프로젝트명은 적지 마세요."},
 
 			{"isuse":"1", 	"name":"SF_GameServer", 			"configuration":"UnityBuild_Release|UnityBuild_Release_CLAN|UnityBuild_Release_LADDER", "output_path":"D:\\trunk\\bin",															"sln_path":"D:\\trunk\\Source\\GameServer.sln",							"project_path":"D:\\trunk\\Source\\GameServer"},		
-			{"isuse":"0", 	"name":"SF_CheckOverlapServer", 	"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\CheckOverlapServer.sln",					"project_path":"D:\\trunk\\Source\\CheckOverlapServer"},
 			{"isuse":"0", 	"name":"SF_ClanChatServer", 		"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\ClanChatServer.sln",						"project_path":"D:\\trunk\\Source\\ClanChatServer"},
 			{"isuse":"0", 	"name":"SF_LoginServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\LoginServer.sln",						"project_path":"D:\\trunk\\Source\\LoginServer"},
-			{"isuse":"0", 	"name":"SF_SessionServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\SessionServer.sln",						"project_path":"D:\\trunk\\Source\\SessionServer"},
-			{"isuse":"0", 	"name":"SF_ManageServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\ManageServer.sln",						"project_path":"D:\\trunk\\Source\\ManageServer"}
-			
+			{"isuse":"0", 	"name":"SF_SessionServer", 			"configuration":"Release", 																"output_path":"D:\\trunk\\bin", 														"sln_path":"D:\\trunk\\Source\\SessionServer.sln",						"project_path":"D:\\trunk\\Source\\SessionServer"},			
 		],
 		
 		"build_path":

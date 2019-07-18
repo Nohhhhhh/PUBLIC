@@ -12,14 +12,8 @@
 
 			{"isuse":"1", 	"name":"GameServer", 			"configuration":"UnityBuild_Release|UnityBuild_Release_CLAN", 	"output_path":"D:\\bin",										"sln_path":"D:\\trunk\\Server_PMS.sln",								"project_path":"D:\\trunk\\GameServer"},		
 			{"isuse":"0", 	"name":"AdminServer", 			"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\AdminServer"},
-			{"isuse":"0", 	"name":"CapsuleServer", 		"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\CapsuleServer"},
-			{"isuse":"0", 	"name":"CheckOverlapServer", 	"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\CheckOverlapServer"},
-			{"isuse":"0", 	"name":"ClanChatServer", 		"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\ClanChatServer"},
 			{"isuse":"0", 	"name":"ClanServer", 			"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\ClanServer"},
 			{"isuse":"0", 	"name":"LoginServer", 			"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\LoginServer"},
-			{"isuse":"0", 	"name":"MatchingServer", 		"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\MatchingServer"},
-			{"isuse":"0", 	"name":"MessengerServer", 		"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\MessengerServer"},
-			{"isuse":"0", 	"name":"SessionServer", 		"configuration":"Release", 										"output_path":"D:\\bin", 										"sln_path":"D:\\trunk\\Server.sln",									"project_path":"D:\\SessionServer"}
 		],
 		
 		"build_path":
