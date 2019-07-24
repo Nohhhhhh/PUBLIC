@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="IOCPServer">
+      <UniqueIdentifier>{7203a4bb-53c5-4421-b3ad-64d27a2156e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\Dump">
+      <UniqueIdentifier>{a7131987-32aa-451d-a676-63a4ae010ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\MemoryPool">
+      <UniqueIdentifier>{2376dbd3-9745-4766-8e05-897e8c277e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\Packet">
+      <UniqueIdentifier>{d1a1fee7-50f3-4ded-95df-ad013ec63c5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\DataStructure">
+      <UniqueIdentifier>{56949b53-3bd9-4ead-b96b-1bddd921b43b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\DesignPattern">
+      <UniqueIdentifier>{1d2feb9c-14fa-4701-92fb-30796716919b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\Session">
+      <UniqueIdentifier>{f7e784cb-78a0-4fcb-aeda-f18b424e552f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\Thread">
+      <UniqueIdentifier>{1d15a5d7-6bd3-4575-8afa-dbcf1d7324f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\System">
+      <UniqueIdentifier>{8eaf5828-c7d7-4194-ab64-8adc7b81f444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IOCPServer\Socket">
+      <UniqueIdentifier>{0b14d3e2-0d03-47f1-8c91-b1237d02765d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. UnityBuild">
+      <UniqueIdentifier>{ec6eee11-b93d-4ec0-aa4f-543a4f08cb7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Noh">
+      <UniqueIdentifier>{0df68b33-5cc3-4311-b898-8e3588f6963a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Info">
+      <UniqueIdentifier>{f5f83bf9-fa28-4c1b-ab29-e1022cf8b950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Random">
+      <UniqueIdentifier>{5a1cd63f-65e5-4ebf-9ab1-0fe2846942e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05. Server">
+      <UniqueIdentifier>{7b05589a-1973-4917-9cc5-2a7cee2527d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Client">
+      <UniqueIdentifier>{fe79c637-7a26-4de1-abaf-bfb9ae82f8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Global">
+      <UniqueIdentifier>{a3651e16-b2e4-447d-a930-cb5c351135dc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="__NOH.h">
+      <Filter>IOCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool_TLS.h">
+      <Filter>IOCPServer\MemoryPool</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool_LF.h">
+      <Filter>IOCPServer\MemoryPool</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>IOCPServer\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue_LF.h">
+      <Filter>IOCPServer\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack_LF.h">
+      <Filter>IOCPServer\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>IOCPServer\DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamQueue.h">
+      <Filter>IOCPServer\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketManager.h">
+      <Filter>IOCPServer\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="LanWorker.h">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="AcceptWorker.h">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>IOCPServer\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>IOCPServer\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread.h">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="TextParser.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPHandler.h">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerManager.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="LockGuard.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="FileStream.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Dump.h">
+      <Filter>IOCPServer\Dump</Filter>
+    </ClInclude>
+    <ClInclude Include="SytemLog.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>IOCPServer\System</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionManager.h">
+      <Filter>IOCPServer\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoManager.h">
+      <Filter>소스 파일\03. Info</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBox.h">
+      <Filter>소스 파일\04. Random</Filter>
+    </ClInclude>
+    <ClInclude Include="LanServer.h">
+      <Filter>소스 파일\05. Server</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>소스 파일\06. Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Noh.h">
+      <Filter>소스 파일\99. Noh</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>소스 파일\02. Global</Filter>
+    </ClInclude>
+    <ClInclude Include="AcceptServer.h">
+      <Filter>소스 파일\05. Server</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>IOCPServer\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamQueue.cpp">
+      <Filter>IOCPServer\DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="LanWorker.cpp">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="AcceptWorker.cpp">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>IOCPServer\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="TextParser.cpp">
+      <Filter>IOCPServer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Profiler.cpp">
+      <Filter>IOCPServer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>IOCPServer\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="LockGuard.cpp">
+      <Filter>IOCPServer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerManager.cpp">
+      <Filter>IOCPServer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="FileStream.cpp">
+      <Filter>IOCPServer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Dump.cpp">
+      <Filter>IOCPServer\Dump</Filter>
+    </ClCompile>
+    <ClCompile Include="SytemLog.cpp">
+      <Filter>IOCPServer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="UnityBuild\UnityBuild_00.cpp">
+      <Filter>소스 파일\01. UnityBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="UnityBuild\UnityBuild_01.cpp">
+      <Filter>소스 파일\01. UnityBuild</Filter>
+    </ClCompile>
+    <ClCompile Include="__main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBox.cpp">
+      <Filter>소스 파일\04. Random</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoManager.cpp">
+      <Filter>소스 파일\03. Info</Filter>
+    </ClCompile>
+    <ClCompile Include="LanServer.cpp">
+      <Filter>소스 파일\05. Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Noh.cpp">
+      <Filter>소스 파일\99. Noh</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>소스 파일\06. Client</Filter>
+    </ClCompile>
+    <ClCompile Include="AcceptServer.cpp">
+      <Filter>소스 파일\05. Server</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
