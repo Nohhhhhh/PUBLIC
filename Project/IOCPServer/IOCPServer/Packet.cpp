@@ -3,10 +3,6 @@
 
 //tls
 NOH::CMemoryPool_TLS<NOH::CPacket>	*NOH::CPacket::m_pMemoryPool;
-// lf
-//NOH::CMemoryPool_LF<NOH::CPacket>	*NOH::CPacket::m_pMemoryPool;
-// no_lf
-//NOH::CMemoryPool<NOH::CPacket>	*NOH::CPacket::m_pMemoryPool;
 
 BYTE NOH::CPacket::m_cCode;
 BYTE NOH::CPacket::m_cXORCode1;
@@ -40,12 +36,6 @@ void NOH::CPacket::Initial(void)
 		memset(m_cpBuffer, 0, m_iBufferSize);
 	}
 
-	// 초기 값은 처음 5byte는 헤더 정보가 들어갈 크기 이므로 5byte 더해줘야 함.
-	//m_cpFront = m_cpBuffer + static_cast<int>( PACKET::HEADER_MAX_SIZE );
-	//m_cpRear = m_cpBuffer + static_cast<int>( PACKET::HEADER_MAX_SIZE );
-
- //   m_iHeaderSize = static_cast<int>( PACKET::HEADER_MAX_SIZE );
-
     m_cpFront = m_cpBuffer + m_iHeaderSize;
 	m_cpRear = m_cpBuffer + m_iHeaderSize;
 }
@@ -57,13 +47,11 @@ void NOH::CPacket::Release(void)
 
 	if ( m_iBufferSize != static_cast<int>( PACKET::BUFF_PACKET_1024 ) )
 	{
-		// 동적 할당 한 경우
 		delete[] m_cpBuffer;
 		m_cpBuffer = nullptr;
 	}
 	else
 	{
-		// 동적 할당 하지 않은 경우
 		m_cpBuffer = nullptr;
 	}
 }
@@ -188,38 +176,27 @@ void NOH::CPacket::Encode(void)
 	NET_HEADER *_pheader = reinterpret_cast<NET_HEADER *>(m_cpBuffer);
 	char *_cppayloadbuffer = m_cpBuffer + static_cast<int>( PACKET::PACKET_HEADER_SIZE );
 	
-	// 0. 고정 Code 초기화
 	_pheader->cCode = m_cCode;
 
-	// 1. Rand XOR Code 생성
 	char _crandcode = rand() % 256;
 	_pheader->cRandCode = _crandcode;
 
-	// 2. Payload의 CheckSum 계산
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_uichecksum += _cppayloadbuffer[iCnt];
 
 	unsigned char _uccehcksum = (unsigned char)(_uichecksum % 256);
 
-	// 3-1. Rand XOR Code로 CheckSum XOR
 	_pheader->ucCheckSum = _uccehcksum ^ _crandcode;
-	// 3-2. Rand XOR Code로 Payload XOR
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_cppayloadbuffer[iCnt] ^= _crandcode;
 
-	// 4-1. 고정 XOR Code1 로 Rand XOR Code를 XOR
 	_pheader->cRandCode ^= m_cXORCode1;
-	// 4-2. 고정 XOR Code1 로 CheckSum을 XOR
 	_pheader->ucCheckSum ^= m_cXORCode1;
-	// 4-3. 고정 XOR Code1 로 Payload를 XOR
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_cppayloadbuffer[iCnt] ^= m_cXORCode1;
 
-	// 4-1. 고정 XOR Code2 로 Rand XOR Code를 XOR
 	_pheader->cRandCode ^=m_cXORCode2;
-	// 4-2. 고정 XOR Code2 로 CheckSum을 XOR
 	_pheader->ucCheckSum ^= m_cXORCode2;
-	// 4-3. 고정 XOR Code2 로 Payload를 XOR
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_cppayloadbuffer[iCnt] ^= m_cXORCode2;
 
@@ -241,29 +218,20 @@ bool NOH::CPacket::Decode(NET_HEADER *pHeader)
 	if(nullptr == pHeader)
 		pHeader = reinterpret_cast<NET_HEADER *>( m_cpBuffer - m_iHeaderSize );
 	
-	// 1-1. 고정 XOR Code2 로 Rand XOR Code를 XOR
 	pHeader->cRandCode ^= m_cXORCode2;
-	// 1-2. 고정 XOR Code2 로 CheckSum을 XOR
 	pHeader->ucCheckSum ^= m_cXORCode2;
-	// 1-3. 고정 XOR Code2 로 Payload를 XOR
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_cppayloadbuffer[iCnt] ^= m_cXORCode2;
 
-	// 2-1. 고정 XOR Code1 로 Rand XOR Code를 XOR
 	pHeader->cRandCode ^= m_cXORCode1;
-	// 2-2. 고정 XOR Code1 로 CheckSum을 XOR
 	pHeader->ucCheckSum ^= m_cXORCode1;
-	// 2-3. 고정 XOR Code1 로 Payload를 XOR
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_cppayloadbuffer[iCnt] ^= m_cXORCode1;
 
-	// 3-1. Rand XOR Code로 CheckSum XOR
 	pHeader->ucCheckSum ^= pHeader->cRandCode;
-	// 3-2. Rand XOR Code로 Payload XOR
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		_cppayloadbuffer[iCnt] ^= pHeader->cRandCode;
 
-	// 4. 실제 Payload의 CheckSum과 헤더의 CheckSum이 동일한지 확인
 	unsigned int uiCheckSum = 0;
 	for (int iCnt = 0; iCnt < _ipayloadsize; ++iCnt)
 		uiCheckSum += _cppayloadbuffer[iCnt];
@@ -470,11 +438,7 @@ NOH::CPacket	&NOH::CPacket::operator >> (UINT64 *ui64Value)
 //-----------------------------------------------------------------------------------------
 void NOH::CPacket::AllocMemoryPool(const long lChunkSize)
 {
-	// tls
-	// TLS의 경우 생성자에서 한 번만 repalcement new 여부를 정함.
 	m_pMemoryPool = new CMemoryPool_TLS<CPacket>(lChunkSize, false);
-	// lf, 
-	//m_pMemoryPool = new CMemoryPool_LF<CPacket>(iBlockNum);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -496,19 +460,6 @@ void NOH::CPacket::DeleteMemoryPool(void)
 //-----------------------------------------------------------------------------------------
 NOH::CPacket * NOH::CPacket::Alloc(void)
 {
-	////PRO_BEGIN(L"PacketAlloc");
-	//// tls, lf
-	//CPacket *cPacket = m_pMemoryPool->Alloc();
-	//// new delete 
-	////CPacket *cPacket = new CPacket;
-	////PRO_END(L"PacketAlloc");
-
-	//cPacket->Clear();
-
-	//InterlockedIncrement(&cPacket->m_lRefCnt);
-
-	//return cPacket;
-
     return m_pMemoryPool->Alloc()->Clear();
 }
 
@@ -523,17 +474,7 @@ bool NOH::CPacket::Free(CPacket & Data)
     
 	if (0 == InterlockedDecrement( &Data.m_lRefCnt ) )
 	{
-        //SYSLOG(g_LogGameServer, NOH::LOG_LEVEL::LEVEL_SYSTEM, L"CPakcet - refcnt(Free1): %d", pData->m_lRefCnt);
-		//PRO_BEGIN(L"PacketFree");
-		// tls
 		m_pMemoryPool->Free( &Data );
-		// lf
-		//m_pMemoryPool->Free(pData, false);
-		// new delete 
-		//delete pData;
-		//PRO_END(L"PacketFree");
-		//SYSLOG(L"Free", en_LOG_LEVEL::SYS_LOG_DEBUG, L"Delete");
-
 		return true;
 	}
 

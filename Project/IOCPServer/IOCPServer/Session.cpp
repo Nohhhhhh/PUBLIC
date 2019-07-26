@@ -23,20 +23,8 @@ void NOH::CSession::Initialize(void)
 void NOH::CSession::Close(void)
 {
     m_spIP.release();
-    //delete m_pIP;
-    //m_pIP = nullptr;
-
     m_spRecvQ.release();
     m_spSendQ.release();
-
-    //delete m_pRecvQ;
-    //m_pRecvQ = nullptr;
-    //
-    //delete m_pSendQ;
-    //m_pSendQ = nullptr;
-
-    //_aligned_free(m_pIOInfo);
-    //m_pIOInfo = nullptr;
 }
 
 void NOH::CSession::SetAddress(const SOCKADDR_IN * lpRemoteSockAddr)
@@ -71,9 +59,6 @@ void NOH::CSession::ClearCompletionKey(void)
 bool NOH::CSession::OnRecv(CPacket & RecvPacket)
 {
     PACKET_PROTOCOL _packetprotocol = static_cast<PACKET_PROTOCOL>(PROTOCOL::DEFAULT);
-
-    // 에코 테스트에는 필요 없음
-    //*pRecvPacket >> &_packetprotocol;
 
     return PacketParsing(RecvPacket, static_cast<PROTOCOL>(_packetprotocol));
 }

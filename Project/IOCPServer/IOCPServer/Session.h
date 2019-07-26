@@ -37,7 +37,7 @@ namespace NOH
 
     public:
         CSession();
-        virtual ~CSession() = 0; // 순수 가상 소멸자는 정의부가 필요
+        virtual ~CSession() = 0;
 
         void Initialize(void);
         void Close(void);
@@ -76,7 +76,6 @@ namespace NOH
         SOCKET                                  m_Socket;
 
         std::unique_ptr<WCHAR []>		        m_spIP;
-        //WCHAR                                   *m_pIP;
         WORD								    m_wPort;
 
         OVERLAPPED							    m_RecvOverlapped;
@@ -84,11 +83,8 @@ namespace NOH
 
         std::unique_ptr<CStreamQueue>		    m_spRecvQ;
         std::unique_ptr<CQueue_LF<CPacket *>>	m_spSendQ;
-        //CStreamQueue						    *m_pRecvQ;
-        //CQueue_LF<CPacket *>				    *m_pSendQ;              // lf
 
         unique_ptr_aligned<IO_INFO>             m_spIOInfo;
-        //IO_INFO							        *m_pIOInfo;             // aligned_malloc
         LONG				                    m_lSendIOCnt;           // 1: sned 불가능 0: send 가능
         LONG				                    m_lSendPQCSFlag;        // 1이면 PQCS 호출
 

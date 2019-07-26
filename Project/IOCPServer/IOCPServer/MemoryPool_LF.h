@@ -1,30 +1,3 @@
-/*---------------------------------------------------------------
-
-MemoryPool.
-
-메모리 풀 클래스.
-특정 데이타(구조체,클래스,변수)를 일정량 할당 후 나눠쓴다.
-
-- 사용법.
-
-CMemoryPool_LF<DATA> MemPool(300, FALSE);
-DATA *pData = MemPool.Alloc();
-
-pData 사용
-
-MemPool.Free(pData);
-
-
-!.	아주 자주 사용되어 속도에 영향을 줄 메모리라면 생성자에서
-Lock 플래그를 주어 페이징 파일로 복사를 막을 수 있다.
-아주 중요한 경우가 아닌이상 사용 금지.
-
-
-
-주의사항 :	단순히 메모리 사이즈로 계산하여 메모리를 할당후 메모리 블록을 리턴하여 준다.
-클래스를 사용하는 경우 클래스의 생성자 호출 및 클래스정보 할당을 받지 못한다.
-클래스의 가상함수, 상속관계가 전혀 이뤄지지 않는다.
-----------------------------------------------------------------*/
 #pragma once
 
 #include <new.h>
@@ -219,8 +192,6 @@ namespace NOH
                 _cpnewblock = (char *)malloc(m_iOneBlockSize);
                 memset(_cpnewblock, 0, m_iOneBlockSize);
 
-                // 새롭게 할당된 메모리의 next가 m_pCurrentNode
-                // m_pCurrentNode와 연결된 메모리를 m_pCurrentNode가 가리키게 함
                 (reinterpret_cast<BLOCK_NODE *>(_cpnewblock))->pNextNode = _pstoredfreenode->pFreeNode;
                 _pstoredfreenode->pFreeNode = reinterpret_cast<BLOCK_NODE *>(_cpnewblock);
             }
@@ -237,15 +208,6 @@ namespace NOH
         bool			_breplacement = false;
         long			_ltempblockcnt = m_lBlockCnt;
 
-        // 생성된 블럭 개수와 할당된 블럭 개수가 동일하다면, 동적할당
-        // 생성된 블럭 개수와 할당된 블럭 개수가 동일하다면, 동적할당
-        // m_lBlockCnt를 지역으로 저장 후, 비교하는 이유 :
-        // Alloc 1 : 5 / 5 로 집입 -> m_lAllocCnt++ 되서 6됬고, m_lBlockCnt를 비교하기 전에
-        // Alloc 2 : 6 / 5 로 집입 -> m_lAllocCnt++ 되서 7됬고, 아래에서 m_lBlockCnt++ 되서 6이 됨.
-        // 따라서 Alloc 1에서 m_lBlockCnt를 6으로 판단하기 때문에 아래 로직으로 빠짐.
-        // 그러므로 goto 문으로 빠지는 현상이 발생. 원래는 데이터가 없기 때문에 동적할당해야 하는대,
-        // 동기화 문제로 데이터가 있다고 판단해버림.
-        // 해결 방법으로는 blockcnt를 지역으로 저장 후, 진행 하거나 goto 문을 사용하면 됨
         if (InterlockedIncrement(&m_lAllocCnt) > m_lBlockCnt)
         {
             // 동적할당 모드
@@ -256,7 +218,6 @@ namespace NOH
             InterlockedIncrement(&m_lBlockCnt);
 
         }
-        // 생성된 블럭 개수가 할당된 블럭 개수보다 크면 freenode 반환
         else
         {
             LONGLONG _lluniqueidx = InterlockedIncrement64(&m_llUniqueIdx);
@@ -267,12 +228,6 @@ namespace NOH
                 _curfreenode.llUniqueIdx = m_spCurFreeNode.get()->llUniqueIdx;
                 _preturnnode = _curfreenode.pFreeNode;
 
-                // 미리 할당된 블럭을 반환해줘야 하는대 pFreeNode가 nullptr이라는 것은
-                // 누군가 빼갓다는 것이니까
-                // 이러한 상황이 나와선 안된다.
-                if (nullptr == _curfreenode.pFreeNode)
-                    CRASH();
-
                 if ((nullptr != _curfreenode.pFreeNode) && (1 == InterlockedCompareExchange128(reinterpret_cast<volatile LONG64 *>(m_spCurFreeNode.get()), _lluniqueidx, reinterpret_cast<LONG64>(_curfreenode.pFreeNode->pNextNode), reinterpret_cast<LONG64 *>(&_curfreenode))))
                     break;
             }
@@ -281,7 +236,6 @@ namespace NOH
         DATA *pData = reinterpret_cast<DATA *>(_preturnnode + 1);
 
         // replacement new
-        // new (메모리 풀로부터 받은 메모리 포인터) 클래스생성자;
         if (_breplacement)
             new ((DATA *)pData) DATA();
 
@@ -308,7 +262,6 @@ namespace NOH
             _curfreenode.pFreeNode = m_spCurFreeNode.get()->pFreeNode;
             _curfreenode.llUniqueIdx = m_spCurFreeNode.get()->llUniqueIdx;
 
-            // CurFreeNode를 NewFreeNode의 next로 연결
             _newfreenode.pFreeNode = _pnode;
             _newfreenode.llUniqueIdx = _lluniqueidx;
             _pnode->pNextNode = _curfreenode.pFreeNode;

@@ -136,7 +136,7 @@ void NOH::CSystemLog::LogText(const WCHAR &wLogLevel, WCHAR & wBuffer)
 		m_wLastDay = _wday;
     }
 
-    CLockGuard lockguard( LOCK_TYPE::SRWLOCK_EXCLUSIVE, &m_SRWLock );
+    CLockGuard lockgaurd( LOCK_TYPE::SRWLOCK_EXCLUSIVE, &m_SRWLock );
 
     // ÆÄÀÏ ¿ÀÇÂ
 	Close();

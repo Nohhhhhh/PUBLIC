@@ -1,51 +1,8 @@
-/*---------------------------------------------------------------
-
-네트워크 패킷용 클래스.
-간편하게 패킷에 순서대로 데이타를 In, Out 한다.
-
-- 사용법.
-
-CPacket cPacket;
-
-넣기.
-cPacket << 40030;	or	cPacket << iValue;	(int 넣기)
-cPacket << 3;		or	cPacket << byValue;	(BYTE 넣기)
-cPacket << 1.4;	    or	cPacket << fValue;	(float 넣기)
-
-빼기.
-cPacket >> iValue;	(int 빼기)
-cPacket >> byValue;	(BYTE 빼기)
-cPacket >> fValue;	(float 빼기)
-
-!.	삽입되는 데이타 FIFO 순서로 관리된다.
-큐가 아니므로, 넣기(<<).빼기(>>) 를 혼합해서 사용하면 안된다.
-
-16.11.21
-- TLS 버전
-
-- 시작 과정
-1. CPacket의 CMemoryPool_TLS<CPacket> 생성 
-2. CMemoryPool_TLS의 CMemoryPool_LF<CChunkBlock<TLS_DATA>> 생성
-3. CMemoryPool_LF의 Alloc을 통해 CChunkBlock 생성자 호출
-4. CMemoryPool_TLS의 Constructor()를 통해 CPacket 생성자 호출
-
-- 종료 과정
-1. CMemoryPool_TLS<CPacket> Delete 처리하면, ~CMemoryPool_TLS() 호출
-2. CMemoryPool_TLS에서 CMemoryPool_LF를 Delete 처리하면, ~CMemoryPool_LF() 호출
-3. CMemoryPool_LF에서 생성된 노드를 Delete 처리하면, ~CChunkBlock() 호출
-----------------------------------------------------------------*/
 #pragma once
 
 #include <WinSock2.h>
 
 #include "__NOH.h"
-
-// tls
-//#include "MemoryPool_TLS.h"
-// lf
-//#include "MemoryPool_LF.h"
-// no_lf
-//#include "MemoryPool.h"
 
 namespace NOH
 {

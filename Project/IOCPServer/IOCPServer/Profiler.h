@@ -27,15 +27,6 @@ PROFILE_END(*L"apple", GetThreadType(), GetThreadIdx());
 
 namespace NOH
 {
-    // __NOH.h 로 옮김 
-    //enum class PROFILE
-    //{
-    //    THREAD_TYPE_COUNT   = 10,       // 스레드 종류 개수 예) Accept, iocp 만 있으면 종류는 2개
-    //    THREAD_COUNT        = 10,       // 스레드 종류 별 스레드 개수
-    //    DATA_SIZE           = 100,
-    //    MINMAX_SIZE         = 4,
-    //};
-
     typedef struct st_OUTPUT_DATA
     {
 	    unsigned __int64	ui64TotalTime;

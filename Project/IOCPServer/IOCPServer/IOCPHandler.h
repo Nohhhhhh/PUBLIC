@@ -84,7 +84,6 @@ namespace NOH
             m_vecWorkerThread.clear();
         }
 
-        // IO Completion Port에 의한 스레드 풀을 종료한다는 것을 알린다.
         if (m_hIOCP)
         {
             CloseHandle(m_hIOCP);
@@ -104,7 +103,6 @@ namespace NOH
     {
         SYSTEM_INFO systemInfo;
 
-        // 생성 할 Worker Thread의 수
         if (0 == m_dwWorkerThread)
         {
             GetSystemInfo(&systemInfo);
@@ -127,7 +125,6 @@ namespace NOH
         if (INVALID_HANDLE_VALUE == m_hIOCP)
             return;
 
-        // 스레드들을 깨우기 위해서 I/O Completion Packet을 보낸다.
         for (DWORD i = 0; i != m_dwWorkerThread; ++i)
             PostQueuedCompletionStatus(m_hIOCP, static_cast<DWORD>(PQCS_TYPE::CLOSE_THREAD), reinterpret_cast<ULONG_PTR>(nullptr), reinterpret_cast<ULONG_PTR>(nullptr));
     }

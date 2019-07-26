@@ -5,7 +5,6 @@
 
 #include "Global.h"
 #include "Singleton.h"
-//#include "TextParser.h"
 
 namespace NOH 
 {

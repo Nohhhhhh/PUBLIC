@@ -93,7 +93,6 @@ namespace NOH
 		//------------------------------------------------------------------------
 		LONGLONG							m_llUniqueIdx;
 
-		//CMemoryPool_TLS<STACK_NODE>	        *m_pMemoryPool;
         std::unique_ptr<CMemoryPool_TLS<STACK_NODE>>    m_spMemoryPool;
 	};
 }
@@ -118,15 +117,10 @@ inline NOH::CStack_LF<DATA>::~CStack_LF()
 		_pdeletenode = _pcurnode;
 		_pcurnode = _pcurnode->pNextNode;
 
-		// tls
-		//m_pMemoryPool->Free(_pdeletenode);
         m_spMemoryPool.get()->Free(_pdeletenode);
 		if (0 == InterlockedDecrement(&m_lStackCnt))
 			break;
 	}
-
-	//delete m_pMemoryPool;
-    //m_pMemoryPool = nullptr;
 }
 
 template <class DATA>
@@ -145,8 +139,6 @@ inline bool NOH::CStack_LF<DATA>::Get(DATA * pData)
 		_curtopnode.llUniqueIdx = m_spCurTopNode.get()->llUniqueIdx;
 		_preturnnode = _curtopnode.pTopNode;
 
-		// 미리 할당된 블럭을 반환해줘야 하는대 pTopNode가 nullptr이라는 것은
-		// 누군가 빼갓다는 것이니까
 		if (nullptr == _curtopnode.pTopNode)
 			continue;
 
@@ -156,9 +148,6 @@ inline bool NOH::CStack_LF<DATA>::Get(DATA * pData)
 
 	*pData = _preturnnode->Data;
 
-	// 리스트에서 빠져야 하므로 Free
-	// tls
-	//m_pMemoryPool->Free(_preturnnode);
     m_spMemoryPool.get()->Free(_preturnnode);
 	InterlockedDecrement(&m_lStackCnt);
 
@@ -168,14 +157,12 @@ inline bool NOH::CStack_LF<DATA>::Get(DATA * pData)
 template <class DATA>
 inline bool NOH::CStack_LF<DATA>::Put(const DATA Data)
 {
-	// lock free할 때는 메모리 풀을 memset하면 안된다.
 	LONGLONG		_lluniqueidx = InterlockedIncrement64(&m_llUniqueIdx);
 	TOP_NODE		_curtopnode;
 	TOP_NODE		_newtopnode;
 
 	InterlockedIncrement(&m_lStackCnt);
 
-	//_newtopnode.pTopNode = m_pMemoryPool->Alloc();
     _newtopnode.pTopNode = m_spMemoryPool.get()->Alloc();
 
 	if (nullptr == _newtopnode.pTopNode)
@@ -189,9 +176,7 @@ inline bool NOH::CStack_LF<DATA>::Put(const DATA Data)
 		_curtopnode.pTopNode = m_spCurTopNode.get()->pTopNode;
 		_curtopnode.llUniqueIdx = m_spCurTopNode.get()->llUniqueIdx;
 
-		// CurFreeNode를 NewFreeNode의 next로 연결
 		_newtopnode.llUniqueIdx = _lluniqueidx;
-		// 템플릿 타입인 DATA는 구조체 *Data 이므로, 포인터가 저장이 되는 것임.
 		_newtopnode.pTopNode->Data = Data;
 		_newtopnode.pTopNode->pNextNode = _curtopnode.pTopNode;
 

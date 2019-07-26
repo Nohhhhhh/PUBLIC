@@ -77,10 +77,8 @@ bool CLIENT::CAcceptServer::AcceptExSockAddr(NOH::SOCKET_INFO & SocketInfo, NOH:
         &_remotesockaddrlen
     );
 
-    // IP, PORT 掘扁
     Session.SetAddress(_lpremotesockaddr);
 
-    // 府郊 家南 加己 惑加
     if (setsockopt(_socket, SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, reinterpret_cast<const char *>(&m_mAcceptExSockAddrsInfo[SocketInfo.GetSocketType()].get()->ListenSocket), sizeof(SOCKET)))
         return false;
 
@@ -99,7 +97,6 @@ NOH::CSession * CLIENT::CAcceptServer::GetSession(const NOH::SOCKET_TYPE SocketT
     {
         NOH::CSessionManager<CUser> *_psessionmanager = NOH::CSessionManager<CUser>::GetInstance();
 
-        // User Idx 惶扁
         if (!_psessionmanager->Get(ipSessionIdx))
             return nullptr;
 

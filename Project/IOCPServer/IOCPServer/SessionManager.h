@@ -41,17 +41,15 @@ namespace NOH
 
     private:
         std::unique_ptr<CStack_LF<int>>	        m_spSessionStack;
-        //CStack_LF<int>                          *m_pSessionStack;
         int                                     m_iMaxSessionCount;
 
         std::vector<std::unique_ptr<T>>     	m_vecUserInfo;
-        //CObject                                 **m_ppUserInfo;
         UINT64				                      m_ui64SessionID;
     };
 
     template<class T>
     inline CSessionManager<T>::CSessionManager()
-        : m_spSessionStack(nullptr),/*m_pSessionStack(nullptr),*/ m_iMaxSessionCount(0), m_vecUserInfo(0),/*m_ppUserInfo(nullptr),*/ m_ui64SessionID(0)
+        : m_spSessionStack(nullptr), m_iMaxSessionCount(0), m_vecUserInfo(0), m_ui64SessionID(0)
     {
     }
 
@@ -66,19 +64,14 @@ namespace NOH
         m_iMaxSessionCount = iMaxSessionCount;
 
         m_spSessionStack.reset(std::move(new CStack_LF<int>(iMaxSessionCount)));
-        //m_pSessionStack = new CStack_LF<int>(iMaxSessionCount);
 
         for (int iUserIdx = iMaxSessionCount; iUserIdx > 0; --iUserIdx)
             m_spSessionStack.get()->Put(iUserIdx - 1);
-
-        //m_ppUserInfo = new CObject*[iMaxSessionCount];
 
         for (int iUserIdx = 0; iUserIdx < iMaxSessionCount; ++iUserIdx)
         {
             m_vecUserInfo.emplace_back(std::make_unique<T>());
             m_vecUserInfo[iUserIdx].get()->Initialize();
-            //m_ppUserInfo[iUserIdx] = new T;
-            //static_cast<T *>(m_ppUserInfo[iUserIdx])->Initialize();
         }
     }
 
@@ -135,8 +128,6 @@ namespace NOH
         if (nullptr != m_spSessionStack)
         {
             m_spSessionStack.release();
-            //delete m_pSessionStack;
-            //m_pSessionStack = nullptr;
         }
     }
 

@@ -17,13 +17,6 @@ namespace NOH
         class CChunkBlock
         {
         public:
-            //------------------------------------------------------------------------
-            // DATA_BLCOK 구조체가 여러 개 연결 되어 있는 구조
-            // DATA_BLOCK 1개 당 여러 개의 CHUNK_DATA가 연결되어 있는 구조
-            // CChunkBlock<CHUNK_DATA>은 MemoryPool_LF 에서 할당 됨
-            // CMemoryPool_TLS에서 할당된 CChunkBlock<CHUNK_DATA>를 반환
-            // 이때, CChunkBlock<CHUNK_DATA>의 주소를 바로 반환하는게 아니라 CHUNK_DATA의 주소를 반환
-            //------------------------------------------------------------------------
             typedef struct st_DATA_BLOCK
             {
                 CChunkBlock<CHUNK_DATA>		*pChunkBlock;
@@ -172,7 +165,6 @@ namespace NOH
         //------------------------------------------------------------------------
         // CChunkBlock<TLS_DATA>를 할당해줄 MemoryPool_LF 클래스 포인터
         //------------------------------------------------------------------------
-        //CMemoryPool_LF<CChunkBlock<TLS_DATA>>		*m_pChunkBlockMemoryPool;
         std::unique_ptr<CMemoryPool_LF<CChunkBlock<TLS_DATA>>> m_spChunkBlockMemoryPool;
 
         DWORD								m_dwTlsIndex;
@@ -278,10 +270,6 @@ namespace NOH
     inline CMemoryPool_TLS<TLS_DATA>::CMemoryPool_TLS(const long lChunkSize, const bool bReplacementNew)
         : m_dwTlsIndex(TlsAlloc()), m_lChunkSize(lChunkSize), m_bReplacementNew(bReplacementNew), m_lUsingBlockCnt(0), m_lUsingChunkCnt(0), m_lChunkCnt(0), m_spChunkBlockMemoryPool(std::make_unique<CMemoryPool_LF<CChunkBlock<TLS_DATA>>>())//, m_pChunkBlockMemoryPool(nullptr)
     {
-        //if (TLS_OUT_OF_INDEXES == m_dwTlsIndex)
-        //    CRASH();
-
-        //m_pChunkBlockMemoryPool = new NOH::CMemoryPool_LF<CChunkBlock<TLS_DATA>>();
     }
 
     template<class TLS_DATA>
@@ -296,8 +284,6 @@ namespace NOH
                 break;
         }
 
-        //delete[] m_pChunkBlockMemoryPool;
-        //m_pChunkBlockMemoryPool = nullptr;
         TlsFree(m_dwTlsIndex);
     }
 

@@ -70,17 +70,9 @@ void NOH::CLanWorker::Run()
         else
         {
             if (&_session.m_RecvOverlapped == _lpoverlapped)
-            {
-                //PROFILE_BEGIN(*L"CompleteRecv", GetThreadType(), GetThreadIdx());
                 CompleteRecv(_session, _dwbytestransfered);
-                //PROFILE_END(*L"CompleteRecv", GetThreadType(), GetThreadIdx());
-            }
             else
-            {
-                //PROFILE_BEGIN(*L"CompleteSend", GetThreadType(), GetThreadIdx());
                 CompleteSend(_session, _dwbytestransfered);
-                //PROFILE_END(*L"CompleteSend", GetThreadType(), GetThreadIdx());
-            }
         }
 
         if (0 == InterlockedDecrement64(&_session.m_spIOInfo.get()->llIOCnt))
