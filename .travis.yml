@@ -45,4 +45,5 @@ matrix:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
 before_install:
+    - cd Project
     - eval "${MATRIX_EVAL}"
