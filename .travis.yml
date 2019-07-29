@@ -1,4 +1,11 @@
 before_script: cd Project
-language: cpp
+language: bash
 compiler: gcc
 os: windows
+env:
+    - CMAKE_PATH="/c/Program Files/CMake/bin"
+script: 
+    - export PATH=$CMAKE_PATH:$PATH
+    - mkdir build && cd build
+    - cmake .. 
+    - cmake --build . 
