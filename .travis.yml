@@ -1,5 +1,8 @@
-before_script: 
-    - cd Project
+before_script: cd Project
+language: cpp
+compiler: gcc
+before_install:
+    - eval "${MATRIX_EVAL}"
     
 matrix:
   include:
@@ -46,6 +49,3 @@ matrix:
             - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-
-before_install:
-    - eval "${MATRIX_EVAL}"
