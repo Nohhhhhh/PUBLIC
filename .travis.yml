@@ -47,5 +47,3 @@ jobs:
       python: "3.6"
       install:
         - pip install -r Project/AutoDeployment/AutoDeployment/requirements.txt
-      script:
-        - pytest
