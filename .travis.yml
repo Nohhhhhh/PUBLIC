@@ -1,11 +1,7 @@
 before_script: cd Project
-language: bash
-compiler: gcc
 os: windows
 env:
-    - CMAKE_PATH="/c/Program Files/CMake/bin"
-script: 
-    - export PATH=$CMAKE_PATH:$PATH
-    - mkdir build && cd build
-    - cmake .. 
-    - cmake --build . 
+  - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
+script:
+  - export PATH=$MSBUILD_PATH:$PATH
+  - ./build.bat
