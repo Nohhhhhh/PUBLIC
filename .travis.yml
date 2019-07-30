@@ -7,4 +7,4 @@ env:
 # test
 script:
   - export PATH=$MSBUILD_PATH:$PATH
-  - ./build.bat
+  - ./Travis/build-windows.bat
