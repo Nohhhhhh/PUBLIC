@@ -14,13 +14,12 @@ env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTool
 jobs:
   include:
     - stage: windows1
-      script: 
-        - export PATH=$MSBUILD_PATH:$PATH
-        - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
-    - stage: windows2
-      script:
-        - export PATH=$MSBUILD_PATH:$PATH
-        - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
+      - script: 
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
+      - script:
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
         
         
   #- MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
