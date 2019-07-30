@@ -48,4 +48,4 @@ jobs:
       install:
         - pip install -r Project/AutoDeployment/AutoDeployment/requirements.txt
       script:
-        - python Project/AutoDeployment/autodeployment.py
+        - python Project/AutoDeployment/AutoDeployment/autodeployment.py
