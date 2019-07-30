@@ -11,7 +11,6 @@
 
 jobs:
   include:
-     
     - stage: windows
     os: windows
     language: cpp
@@ -22,7 +21,6 @@ jobs:
     - script:
         - export PATH=$MSBUILD_PATH:$PATH
         - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
-   
     - stage: python
     os: python
       
