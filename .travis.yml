@@ -4,8 +4,7 @@ env:
   - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
 
 script:
-  - export PATH=$MSBUILD_PATH:$PATH
-  - ./Travis/build-windows.bat
-
-before_install:
-    - eval "${MATRIX_EVAL}"
+  - export PATH=$MSBUILD_PATH:$PATH  
+  - echo "Building Windows"
+  - MSBuild.exe Project/\AStarSearch/\AStarSearch.sln /p:Configuration=Release
+  - echo "Done"
