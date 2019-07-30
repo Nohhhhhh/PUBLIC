@@ -1,8 +1,11 @@
-language: cpp
-compiler:
-- gcc
-os:
-- linux
-script:
-- g++ example/example.cpp -std=c++11 -o urlparser_example
-- ./urlparser_example
+before_script: cd Project
+language: bash
+compiler: gcc
+os: windows
+env:
+    - CMAKE_PATH="/c/Program Files/CMake/bin"
+script: 
+    - export PATH=$CMAKE_PATH:$PATH
+    - mkdir build && cd build
+    - cmake .. 
+    - cmake --build . 
