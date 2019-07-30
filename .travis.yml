@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 before_script: cd Project
 os: windows
 env:
@@ -7,16 +6,3 @@ env:
 script:
   - export PATH=$MSBUILD_PATH:$PATH
   - ./build.bat
-=======
-before_script: cd Project/AStarSearch
-language: bash
-compiler: gcc
-os: windows
-env:
-    - CMAKE_PATH="/c/Program Files/CMake/bin"
-script: 
-    - export PATH=$CMAKE_PATH:$PATH
-    - mkdir build && cd build
-    - cmake .. 
-    - cmake --build . 
->>>>>>> 5bf7a7be5e70f418e0bdf0ffc07c29023b7a67ba
