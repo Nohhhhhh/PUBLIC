@@ -1,7 +1,9 @@
 # PUBLIC
 HomePage: https://iamsungjunnoh.wordpress.com
 
-## 1. PROJECT [![Build Status](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master&hash=99.7)](https://travis-ci.org/Nohhhhhh/PUBLIC)
+# 1. PROJECT
+## 1.1 C++ [![Build Status](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master&hash=99.7)](https://travis-ci.org/Nohhhhhh/PUBLIC)
+
 ### LockTest 
 * Check the performance of C++ Lock types (atomic / Interlocked / SRWLock / CriticalSection / Mutex)
 
@@ -18,16 +20,18 @@ HomePage: https://iamsungjunnoh.wordpress.com
 ### SystemMonitor
 * Check various system information using PDH (Processor / Memory / Network Interface )
 
+### IOCPServer
+* Echo Server Using IOCP
+
+## 1.2 PYTHON 
+
 ### UnityBuildMaker
 * Automatically make C++ project as C++ UnityBuild
 
 ### AutoDeployment
 * Build vs project + Upload files to FTP + Commit SVN
 
-### IOCPServer
-* Echo Server Using IOCP
-
-## 2. SOURCE
+# 2. SOURCE
 ### __Noh.h 
 * 'typedef' and 'enum class' are declared and defined.
 
