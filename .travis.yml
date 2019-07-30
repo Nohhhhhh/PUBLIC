@@ -1,14 +1,3 @@
-##language: cpp
-##os: windows
-##env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
-##script:
-##  - export PATH=$MSBUILD_PATH:$PATH
-##  - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
-##script: 
-##  - export PATH=$MSBUILD_PATH:$PATH
-##  - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
-
-
 jobs:
   include:
     - stage: windows
@@ -25,6 +14,34 @@ jobs:
       script:
           - export PATH=$MSBUILD_PATH:$PATH
           - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
+    - stage: windows
+      os: windows
+      language: cpp
+      env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+      script:
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/JumpPointSearch/JumpPointSearch.sln -p:Configuration=Release -p:Platform=x64
+    - stage: windows
+      os: windows
+      language: cpp
+      env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+      script:
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/JumpPointSearch_NotRecursive/JumpPointSearch_NotRecursive.sln -p:Configuration=Release -p:Platform=x64
+    - stage: windows
+      os: windows
+      language: cpp
+      env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+      script:
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/LockTest/LockTest.sln -p:Configuration=Release -p:Platform=x64
+    - stage: windows
+      os: windows
+      language: cpp
+      env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+      script:
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/SystemMonitor/SystemMonitor.sln -p:Configuration=Release -p:Platform=x64
     - stage: python
       os: python
       
