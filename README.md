@@ -1,4 +1,4 @@
-# PUBLIC
+# PUBLIC [![Build Status](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master)](https://travis-ci.org/Nohhhhhh/PUBLIC)
 HomePage: https://iamsungjunnoh.wordpress.com
 
 ## 1. PROJECT
