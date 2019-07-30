@@ -44,13 +44,3 @@ jobs:
           - MSBuild.exe Project/SystemMonitor/SystemMonitor.sln -p:Configuration=Release -p:Platform=x64
     - stage: python
       os: python
-      
-      
-        
-        
-  #- MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
-  #- MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
-  #- MSBuild.exe Project/JumpPointSearch/JumpPointSearch.sln -p:Configuration=Release -p:Platform=x64
-  #- MSBuild.exe Project/JumpPointSearch_NotRecursive/JumpPointSearch_NotRecursive.sln -p:Configuration=Release -p:Platform=x64
-  #- MSBuild.exe Project/LockTest/LockTest.sln -p:Configuration=Release -p:Platform=x64
-  #- MSBuild.exe Project/SystemMonitor/SystemMonitor.sln -p:Configuration=Release -p:Platform=x64
