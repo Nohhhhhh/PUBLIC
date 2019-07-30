@@ -46,6 +46,6 @@ jobs:
       language: python
       python: "3.6"
       install:
-        - pip install -r Project/AutoDeployment/AutoDeploymentrequirements.txt
+        - pip install -r Project/AutoDeployment/AutoDeployment/requirements.txt
       script:
         - Project/AutoDeployment/autodeployment.py
