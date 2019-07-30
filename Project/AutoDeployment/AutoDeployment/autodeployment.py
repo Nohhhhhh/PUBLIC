@@ -7,11 +7,9 @@ import tortoisesvnmanager
 colorama.init()
 
 ####################### 국가 정보 파일 로드 #######################
-print (os.getcwd()) #현재 디렉토리의
-print (os.path.realpath(__file__))#파일
-print (os.path.dirname(os.path.realpath(__file__)) )#파일이 위치한 디렉토리
-filepath_Info = os.getcwd()
-filepath_Info = os.path.join(filepath_Info, "AD\\Info.json")
+
+filepath_Info = os.path.dirname(os.path.realpath(__file__)) #파일이 위치한 디렉토리
+filepath_Info = os.path.join(filepath_Info, "/AD/Info.json")
 print(filepath_Info);
 
 with open(filepath_Info, encoding="utf-8") as data_file:
