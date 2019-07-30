@@ -6,5 +6,6 @@ env:
 script:
   - export PATH=$MSBUILD_PATH:$PATH  
   - echo "Building Windows"
-  - C:\Users\travis\build\Nohhhhhh\PUBLIC>MSBuild.exe Project\AStarSearch\AStarSearch.sln /p:Configuration=Release
+  - cd C:\Users\travis\build\Nohhhhhh\PUBLIC
+  - MSBuild.exe Project\AStarSearch\AStarSearch.sln /p:Configuration=Release
   - echo "Done"
