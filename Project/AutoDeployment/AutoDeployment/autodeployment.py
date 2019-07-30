@@ -8,7 +8,7 @@ colorama.init()
 
 ####################### 국가 정보 파일 로드 #######################
 
-filepath_Info = os.path.dirname(os.path.realpath(__file__)) #파일이 위치한 디렉토리
+filepath_Info = os.path.realpath(__file__) #파일이 위치한 디렉토리
 filepath_Info = os.path.join(filepath_Info, "/AD/Info.json")
 print(filepath_Info);
 
