@@ -8,18 +8,17 @@
 ##  - export PATH=$MSBUILD_PATH:$PATH
 ##  - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
 
-
+language: cpp
 jobs:
   include:
     - os: windows
-    language: cpp
-    env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
-    - script: 
-        - export PATH=$MSBUILD_PATH:$PATH
-        - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
-    - script:
-        - export PATH=$MSBUILD_PATH:$PATH
-        - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
+      env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+      - script: 
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
+      - script:
+          - export PATH=$MSBUILD_PATH:$PATH
+          - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
     - os: python
         
         
