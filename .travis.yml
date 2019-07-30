@@ -1,11 +1,7 @@
-language: cpp
-matrix:
-  include:
-    - os: windows
-      env:
-      - MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
-      script:
-      - export PATH=$MSBUILD_PATH:$PATH
-      - echo "Build"
-      - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
-      - echo "Done"
+os: windows
+env: MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+script:
+  - export PATH=$MSBUILD_PATH:$PATH
+  - echo "Build"
+  - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
+  - echo "Done"
