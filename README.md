@@ -1,7 +1,7 @@
-# PUBLIC [![Build Status](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master)](https://travis-ci.org/Nohhhhhh/PUBLIC)
+# PUBLIC
 HomePage: https://iamsungjunnoh.wordpress.com
 
-## 1. PROJECT
+## 1. PROJECT [![Build Status](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master)](https://travis-ci.org/Nohhhhhh/PUBLIC)
 ### LockTest 
 * Check the performance of C++ Lock types (atomic / Interlocked / SRWLock / CriticalSection / Mutex)
 
