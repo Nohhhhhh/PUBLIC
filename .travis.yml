@@ -1,4 +1,3 @@
-before_script: cd Project
 language: cpp
 os: windows
 env:
