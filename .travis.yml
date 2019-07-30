@@ -7,9 +7,9 @@ jobs:
       script: 
         - export PATH=$MSBUILD_PATH:$PATH
         - MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
-      script:
-        - export PATH=$MSBUILD_PATH:$PATH
-        - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
+      #script:
+      #  - export PATH=$MSBUILD_PATH:$PATH
+      #  - MSBuild.exe Project/IOCPServer/IOCPServer.sln -p:Configuration=Release_UnityBuild -p:Platform=x64
         
         
   #- MSBuild.exe Project/AStarSearch/A_Star_Search.sln -p:Configuration=Release -p:Platform=x64
