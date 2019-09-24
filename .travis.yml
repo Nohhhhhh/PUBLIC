@@ -42,3 +42,4 @@ jobs:
       script:
           - export PATH=$MSBUILD_PATH:$PATH
           - MSBuild.exe Project/SystemMonitor/SystemMonitor.sln -p:Configuration=Release -p:Platform=x64
+
