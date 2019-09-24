@@ -42,8 +42,3 @@ jobs:
       script:
           - export PATH=$MSBUILD_PATH:$PATH
           - MSBuild.exe Project/SystemMonitor/SystemMonitor.sln -p:Configuration=Release -p:Platform=x64
-    #- stage: python
-    #  language: python
-    #  python: "3.6"
-    #  install:
-    #    - pip install -r Project/AutoDeployment/AutoDeployment/requirements.txt
