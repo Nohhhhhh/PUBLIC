@@ -1,5 +1,5 @@
 # PUBLIC
-HomePage: https://iamsungjunnoh.wordpress.com
+HomePage: https://openshortcuts.com
 
 # 1. PROJECT
 ## 1.1 C++ [![Build Status](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master)](https://travis-ci.org/Nohhhhhh/PUBLIC.svg?branch=master)
