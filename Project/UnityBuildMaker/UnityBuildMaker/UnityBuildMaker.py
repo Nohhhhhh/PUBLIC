@@ -1,10 +1,10 @@
 import os,sys, xml, xml.dom.minidom, copy
 
 ### path
-vcxprojPath = 'D:\\GameServer\\GameServer.vcxproj'
-unityFolderPath = 'D:\\SF_GameServer\\UnityBuild'
+vcxprojPath = 'D:\\test\\test.vcxproj'
+unityFolderPath = 'D:\\test\\UnityBuild'
 
-### load xmlv
+### load xml
 doc = xml.dom.minidom.parse(vcxprojPath)
 
 ### make config List 
@@ -15,22 +15,21 @@ for config in doc.getElementsByTagName("ProjectConfiguration"):
 
 ### make cpp List / add cpp file excluded
 cppList = []    
-isPCHFile = False
 for ClCompiles in doc.getElementsByTagName("ClCompile"):
     tempconfigList = copy.copy(configList)
     ### cpp file excluded
+    ### UnityBuild 관련 Configuration 에서 모든 cpp 파일을 빌드 제외 
     if ClCompiles.getAttribute("Include"):
+        ### UnityBuild 관련 cpp 파일이면 패스
         if -1 != ClCompiles.getAttribute("Include").find("UnityBuild"):
             continue
-
-        if -1 != ClCompiles.getAttribute("Include").find("stdafx"):
-            isPCHFile = True
 
         lastNodeFlag = False
         lastNode = doc.createTextNode("\n    ")
         for childNode in ClCompiles.childNodes:
             if "ExcludedFromBuild" == childNode.localName:
-                ## change exclude option
+                ### change exclude option
+                ### 만약 이미 빌드 예외 관련 정보가 있다면, true 로 변경
                 if -1 != childNode.getAttribute("Condition").find("UnityBuild_"):
                     childNode.firstChild.replaceWholeText("true")
                     del tempconfigList[tempconfigList.index(childNode.getAttribute("Condition"))]
@@ -40,9 +39,11 @@ for ClCompiles in doc.getElementsByTagName("ClCompile"):
                         
         ## add excluded option
         if 0 != len(tempconfigList):
+            ## 빈칸 있으면 제거
             if lastNodeFlag:
                 ClCompiles.removeChild(lastNode)
-
+            
+            ## 빌드 제외 구문 추가
             for addNode in tempconfigList:
                 txt = doc.createTextNode("\n      ")
                 ClCompiles.appendChild(txt)
